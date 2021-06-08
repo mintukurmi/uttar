@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uttar- A Question and Answer Platform for All</title>
+    
+    <!-- CSS only -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <!-- custom styles-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+
+</head>
+<body style="background-image: url('./img/undraw_Faq_re_31cw.svg'); background-size: contain; background-attachment: fixed; background-repeat: no-repeat; background-color: #F7F7F7;">
+
+
+
+    
+    <div class="container">
+        <h2 class="mt-4 logo" style="font-size: 1.5em; font-weight: bold;">UTTAR</h2>
+        <div class="row" style="height: 90vh;">
+    
+            <div class="col-md-5 d-table mx-auto my-auto">
+    
+            <div class="card" style="z-index: 1 ; opacity: 1">
+    
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+                    <h3 class="text-center mt-4 mb-2">Create an Account</h3>
+                    <p class="text-center form-text text-muted">Please fill the details correctly</p>
+                <!-- Form -->
+                <form class="mt-4" method="POST" action="">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="eg: Rahul Sharma" name="name" {{#if formData}} value="{{formData.name}}"{{/if}}>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="eg: example@gmail.com" name="email" {{#if formData}} value="{{formData.email}}"{{/if}}>
+                        {{#if error_msg}}
+                            <p class="text-danger"> <i class="fa fa-exclamation-triangle mr-2 mt-2"></i> Email Already Registered</p>
+                        {{/if}}
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password 
+                          <span class="pl-2 pr-3" data-toggle="tooltip" data-placement="right" title="Please use strong passwords. Include A-Z, a-z, 0-9, special characters,e.g: @, #, $ ,etc "> <i class="fa fa-question-circle"></i></span>
+                      </label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                      <div class="float-right pass-toggler" style="cursor:pointer;" onclick="passToggler(this.parentElement)">
+                          <i class="fa fa-eye-slash"></i>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                    </div>
+                  </form>
+                <!-- Form -->
+                <div class="text-center mt-3 pt-2">
+                    <a href="/login">Already have an account?  Login now</a>
+                  </div>
+                <div class="text-center mt-3 pt-2">
+                   <a href="/"> <i class="fa fa-home mr-1 text-center"></i> Home </a>
+                 </div>
+                </div>
+            
+            </div>
+            <!-- Material form login -->
+    
+            <!-- Default form login -->
+                </div>
+    
+            </div>
+    
+        </div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="./js/script.js"></script>
+
+<script>
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+
+
+<!-- footer -->
+    <section class="mt-2 bg-dark">
+      <div class="py-4 mt-2">
+        <p class="text-center text-white"> &copy; 2021 | All Rights Reserved</p>
+      </div>
+    </section>
+<!-- / footer -->
+
+  <!-- Modals-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> <strong> <i class="fa fa-comments-o mr-3"></i> Post a Question ?</strong> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="new_post" method="POST">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Post Title:</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="description" name="description" required></textarea>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Select Category(s)</label>
+              </div>
+              <div class="col"> 
+                <select id="categories" placeholder="Select upto 3 Categories" multiple name="categories" required>
+                    {{#each data.categories}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select> 
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="post-submit"> Post now </button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+{{!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> --}}
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> 
+ <!-- sweet alerts -->
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
+<script src="./js/script.js"></script>
+<script src="./js/post.js"></script>
+
+<script src="https://unpkg.com/tiny-editor/dist/bundle.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+    <script>
+        var updatePostStats = {
+            Like: function (postId) {
+                document.querySelector('#likes-count-' + postId).textContent++;
+            },
+            Unlike: function(postId) {
+                document.querySelector('#likes-count-' + postId).textContent--;
+            }
+        };
+    
+        var toggleButtonText = {
+            Like: function(button) {
+                button.innerHTML = "<i class='fa fa-thumbs-up'></i> Liked";
+            },
+            Unlike: function(button) {
+                button.innerHTML = "<i class='fa fa-thumbs-o-up'></i> Like ";
+            }
+        };
+    
+        var actOnPost = function (event) {
+            var postId = event.target.dataset.postId;
+            var action = event.target.textContent.trim();
+            if(action == "Liked") { action = 'Unlike' }
+            console.log(action)
+            toggleButtonText[action](event.target);
+            //updatePostStats[action](postId);
+            axios.post('/posts/' + postId + '/like', { action: action });
+        };
+
+        var actOnComment = function (event) {
+            var postId = event.target.dataset.postId;
+            var cid = event.target.dataset.commentId;
+            var action = event.target.textContent.trim();
+            if(action == "Liked") { action = 'Unlike' }
+            console.log(action)
+            toggleButtonText[action](event.target);
+            //updatePostStats[action](postId);
+            axios.post('/posts/' + cid + '/like/' + postId, { action: action });
+        };
+
+    </script>
+
+    
+    
+    <script>
+        var pusher = new Pusher('6c9b4388e7ee9179cd80', {
+            cluster: 'ap2'
+        });
+        var socketId;
+    
+        // retrieve the socket ID on successful connection
+        pusher.connection.bind('connected', function() {
+            socketId = pusher.connection.socket_id;
+        });
+    
+    
+        var channel = pusher.subscribe('post-events');
+        channel.bind('postAction', function(data) {
+            // log message data to console - for debugging purposes
+            console.log(data);
+            var action = data.action;
+           updatePostStats[action](data.postId);
+        });
+    </script>
+
+</body>
+</html>
+

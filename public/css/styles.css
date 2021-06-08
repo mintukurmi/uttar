@@ -1,0 +1,232 @@
+/* globals */
+body{
+    /* background-color: #F1F2F2; */
+    background-image: url("../img/dot-grid.png");
+}
+
+
+/* custom  styles  */
+
+.logo {
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.5em;
+}
+
+#main-search{
+    max-width: 500px;
+    border-radius: 0 !important;
+}
+
+.navbar{
+    background-color: #252527 !important;
+    padding-top:6px;
+    padding-bottom: 6px;
+}
+
+#big-header{
+    background-color: #30303a !important;
+}
+
+
+#category-list .badge{
+    font-size: .85em;
+    margin: 4px;
+}
+
+.trends{
+    font-size: 1.5em;
+    color: #E65145;
+}
+
+.trending-list .card{
+    margin-bottom: 22px !important;
+}
+
+.card .post-meta span{
+    font-size: .9em !important;
+}
+
+/* profile*/
+/* body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+} */
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 6%;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+/* .profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+} */
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+
+
+/*  Login  */
+.login-form{
+    max-width: 400px;
+}
+
+.pass-toggler{
+    margin-top: -40px;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+a:hover { text-decoration: none !important;}
+
+.answer-btn {
+    border-radius: 15%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+.fixed { height:100vh; overflow:hidden; }
+.scrollit { height: 100vh; overflow-y:scroll; }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollit::-webkit-scrollbar {
+    /* display: none; */
+    scrollbar-width: 1px !important;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollit {
+    scrollbar-width: 1px !important;  /* Firefox */
+  }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+  /*  Like btn */
+  button.like-btn {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    cursor: pointer;
+  }
+  
+  button.like-btn:hover {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+  }
+  
+  button.like-btn:active {
+    outline: none;
+    border: none;
+  }
+  
+  button.like-btn:focus {
+    outline: 0;
+  }
+
+  .white-space-pre {
+    white-space: pre-wrap;
+  }

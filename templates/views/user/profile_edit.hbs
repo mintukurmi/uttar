@@ -1,0 +1,132 @@
+
+{{>header}}
+
+<!-- ========== Main big header =================== -->
+
+<section id="big-header" class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark" style="max-height:500px; background-size: cover; background-image: url('./img/undraw_Faq_re_31cw.svg'); background-position: center;">
+  
+    <div class="container-fluid">
+       <div class="row  justify-content-center align-items-center d-flex text-center h-100">
+         <div class="col-12 col-md-8  h-50 ">
+             <h1 class="text-danger mb-2 mt-4"><strong> <span class="text-white">Get All</span> Your Questions Answered</strong> </h1>
+             <p class="lead  text-white mb-5">A Question and Answer Platform for All</p>
+             <a href="/" class="btn btn-danger my-2"><i class="fa fa-home"></i> Home</a>
+         </div>
+       </div>
+     </div>
+     </section>
+<!-- ========== / Main big header =================== -->
+
+<!-- Main content area -->
+
+<section class="container my-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="container emp-profile">
+                <h4 class="text-center mb-2 text-danger"> Update Profile Information</h4>
+                <div class="dropdown-divider mt-4 mb-5"></div>
+                <form method="post">
+                    <form method="POST" action="">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-img">
+                                <img src="./img/avtar.jpg" alt=""/>
+                                <div class="file btn btn-lg btn-primary">
+                                    Change Photo
+                                    <input type="file" name="file"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="profile-head">
+                                <h4 class="m-0 p-0">
+                                    {{data.user.usermeta.name}}
+                                </h4>
+                                <p class="text-muted m-0">{{data.user.email}}</p>
+                                <h5 class="mt-2 text-primary">
+                                    {{data.user.usermeta.profession}}
+                                </h5>
+
+                        <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="profile-edit-btn">Save</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="profile-work">
+                                <p class="text-danger">SOCIAL LINKS</p>
+                                <a href="">Website</a><br/>
+                                <a href="">Facebook</a><br/>
+                                <a href="">Twitter</a>
+                                <p class="text-danger mt-5">LIKES</p>
+                                <a href="">Web Designer</a><br/>
+                                <a href="">Web Developer</a><br/>
+                                <a href="">WordPress</a><br/>
+                                <a href="">WooCommerce</a><br/>
+                                <a href="">PHP, .Net</a><br/>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Name</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><input type="text" class="form-control" placeholder="Name" name="name" value="{{data.user.usermeta.name}}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><input type="text" class="form-control" placeholder="Email" value="{{data.user.email}}" disabled></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Phone</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><input type="text" class="form-control" placeholder="Phone no" name="phone" value="{{data.user.usermeta.phone}}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Profession</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><input type="text" class="form-control" placeholder="Designation" name="profession" value="{{data.user.usermeta.profession}}"></p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>My Bio</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="bio" placeholder="Give a short Bio">{{data.user.usermeta.bio}}</textarea> </p>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>           
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{{footer}}

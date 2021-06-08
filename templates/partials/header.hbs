@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uttar- A Question and Answer Platform for All</title>
+    
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- custom styles-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css"> 
+  <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+
+</head>
+<body>
+    <!-- NAVBAR SECTION -->
+    <div class="nav-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand logo" href="/">UTTAR</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mr-5">
+                  <li class="nav-item mx-1 active">
+                    <a class="nav-link" href="#"> <i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <a class="nav-link" href="#"> <i class="fa fa-pencil-square-o"></i> Answer</a>
+                  </li>
+                   <li class="nav-item mx-1">
+                    <a class="nav-link" href="#"> <i class="fa fa-list"></i> My Posts</a>
+                  </li>
+                </ul>
+                <div class="profile">
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{data.user.avatar.url}}" class="rounded-circle img-thumbnail" alt="..." style="width: 32px; padding: 0;">
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <p class="dropdown-item pb-0 mb-0">Hi, {{dispUserName data.user}} </p>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/profile"> <i class="fa fa-user mr-1"></i> Profile</a>
+                        <a class="dropdown-item" href="#"> <i class="fa fa-pencil-square-o mr-1"></i> Answers</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout"> <i class="fa fa-sign-out mr-1"></i> Logout</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </div>
+<!--/ NAVBAR SECTION -->
