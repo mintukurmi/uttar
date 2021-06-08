@@ -9,6 +9,7 @@ var ObjectId = require('mongodb').ObjectID;
 // Model imports
 const Post = require('../models/Post');
 const Category = require('../models/Category');
+const User = require('../models/User');
 
 dotenv.config(); // env config
 
@@ -82,8 +83,9 @@ router.get('/:id', auth, async (req, res) => {
 
         const _id = req.params.id;
         const post = await Post.findById(_id);
+        const allUsers = await User.find();
 
-        if(!post){
+        if(!post || !allUsers){
             throw new Error()
         }
 
@@ -95,7 +97,7 @@ router.get('/:id', auth, async (req, res) => {
             console.log( post.views.viewers)
         }
         
-        res.render('post/post_view', { data: { post, categories, user: req.user } })
+        res.render('post/post_view', { data: { post, categories, user: req.user, allUsers } })
       
     }
     catch(err) {

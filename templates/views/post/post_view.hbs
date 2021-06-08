@@ -11,10 +11,10 @@
             <h1 class="text-danger mb-2 mt-4"><strong> <span class="text-white">Get All</span> Your Questions Answered</strong> </h1>
             <p class="lead  text-white mb-5">A Question and Answer Platform for All</p>
             
-            <form id="main-search" class="m-auto mt-3">
+            <form method="GET" action="/search/" id="main-search" class="m-auto mt-3">
               <div class="form-row">
                 <div class="col-12">
-                  <input type="text" class="form-control" placeholder="Start typing your questions...">
+                  <input type="text" class="form-control" name="query" value="{{data.query}}" placeholder="Start typing your questions...">
                 </div>
               </div>
               <p class="my-3 mb-5"><button class="btn bg-danger shadow-lg btn-round text-light btn-rised px-4"> <i class="fa fa-search mr-1"></i> Search</button></p>
@@ -37,9 +37,9 @@
                 <div class="card animate__animated animate__fadeIn">
                 <div class="card-header bg-transparent border-secondary">
                     <div>
-                      <a href="" class="text-dark"> 
-                        <img src="./img//mintu.jpg" class="rounded-circle img-thumbnail border-danger" alt="..." style="width: 32px; padding: 0;">
-                        <h6 class="d-inline ml-2">Mintu Moni Kurmi </h6>
+                      <a href="/user/{{data.post.author}}" class="text-dark"> 
+                        <img src="{{showPostAuthorProfile data.allUsers data.post.author}}" class="rounded-circle img-thumbnail border-danger" alt="..." style="width: 32px; padding: 0;">
+                        <h6 class="d-inline ml-2">{{showPostAuthor data.allUsers data.post.author}} </h6>
                         </a>
                         <span class="float-right my-auto" style="font-size: .9em;">  
                          <ul class="navbar-nav">
@@ -117,9 +117,9 @@
                   <div class="card-header bg-transparent border-secondary"> 
                       <div>
                          <span class="mr-2"> <i class="fa fa-mail-reply"></i> Replied </span>
-                      <a href="" class="text-dark"> 
-                        <img src="./img//mintu.jpg" class="rounded-circle img-thumbnail border-danger" alt="..." style="width: 32px; padding: 0;">
-                        <h6 class="d-inline ml-2">Mintu Moni Kurmi </h6>
+                      <a href="/user/{{this.author}}" class="text-dark"> 
+                        <img src="{{showPostAuthorProfile ../data.allUsers this.author}}" class="rounded-circle img-thumbnail border-danger" alt="..." style="width: 32px; padding: 0;">
+                        <h6 class="d-inline ml-2">{{showPostAuthor ../data.allUsers this.author}}</h6>
                         </a>
                         <span class="float-right my-auto" style="font-size: .9em;">  
                          <ul class="navbar-nav">
@@ -147,7 +147,7 @@
                       <span class="ml-3" id="likes-count-{{ this._id }}"> {{ calculateLikes this.likes}}</span> <span>likes</span>
                       <span class="ml-3"> <i class="fa fa-clock-o"></i> {{formatDate this.lastUpdated 'MMM Do YY'}}</span>
                       <div class="float-right">
-                          <span class="mx-2"> <i class="fa fa-eye text-success"></i> 100K</span>
+                          <span class="mx-2"> <i class="fa fa-eye text-success"></i> {{calculateViewers ../data.post.views.viewers}}</span>
                       </div>
                     </div>
                   </div>

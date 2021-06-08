@@ -21,6 +21,7 @@ require('./middlewares/socket');
 
 // models
 const Category = require('./models/Category');
+const User = require('./models/User');
 
 
 // express init
@@ -80,9 +81,10 @@ app.set('view engine', 'hbs');
 app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 
+// post time resolver
 hbs.registerHelper('formatDate', function (date, format) { 
   // return moment(date).format(format);
-  return moment(date).startOf('hour').fromNow();
+  return moment(date).fromNow();
  });
 
  // helper to return category name
@@ -154,6 +156,25 @@ hbs.registerHelper('countComments', function (comments = []) {
   return comments.length == 0 ? 'No' : comments.length
 });
 
+// helper to get user name
+hbs.registerHelper('showPostAuthor', function (users = [], id) { 
+    
+    for(i=0; i<users.length; i++){
+      if(users[i]._id == id){
+        return users[i].usermeta.name
+      }
+    }  
+});
+
+// helper to get user name
+hbs.registerHelper('showPostAuthorProfile', function (users = [], id) { 
+    
+  for(i=0; i<users.length; i++){
+    if(users[i]._id == id){
+      return users[i].avatar.url
+    }
+  }  
+});
 
 // serving public assets
 app.use(express.static(publicDirPath));
@@ -163,6 +184,7 @@ app.use('/posts', express.static(publicDirPath));
 app.use('/profile', express.static(publicDirPath));
 app.use('/profile/edit', express.static(publicDirPath));
 app.use('/search', express.static(publicDirPath));
+app.use('/user', express.static(publicDirPath));
 
 // Routes Variables
 const indexRouter = require('./routes/index');

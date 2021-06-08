@@ -21,11 +21,13 @@ router.get("/", auth, async (req, res) => {
 
         const categories = await Category.find();
 
-        if(!posts || !categories || !latestPosts){
+        const allUsers = await User.find();
+
+        if(!posts || !categories || !latestPosts || !allUsers){
             throw new Error();
         }
 
-        res.render('index', { data: { categories , posts, latestPosts, user: req.user, header: "Explore" } })
+        res.render('index', { data: { categories , posts, latestPosts, user: req.user, header: "Explore", allUsers: allUsers} })
     }
     catch(err) {
         console.log(err)
@@ -200,11 +202,13 @@ router.get('/search', auth, async (req, res) => {
         const latestPosts = await Post.find().sort({_id: -1}).limit(5);
         const categories = await Category.find();
 
-        if(!posts || !categories || !latestPosts){
+        const allUsers = await User.find();
+
+        if(!posts || !categories || !latestPosts || !allUsers){
             throw new Error();
         }
        
-        res.render('index', {data: { posts , latestPosts, categories, user: req.user, query, header: `Search Results: ${query} `  }})
+        res.render('index', {data: { posts , latestPosts, categories, user: req.user, query, allUsers,header: `Search Results: ${query} `  }})
 
     }
     catch(err){
@@ -212,6 +216,20 @@ router.get('/search', auth, async (req, res) => {
     }
 })
 
+router.get('/user/:id', auth, async (req, res) => {
 
+    try{
+        const _id = req.params.id;
+        
+        const user = await User.findById(_id);
+
+        res.render('user/view_profile', {data:{ user: req.user, userProfile: user} })
+
+    }
+    catch(err){
+
+    }
+
+})
 
 module.exports = router
