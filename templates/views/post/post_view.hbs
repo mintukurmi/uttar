@@ -184,11 +184,9 @@
               <h5 class="text-center mb-4">Can You Answer? </h5>
                   <div>
                     <ul>
-                      <li>Question 1</li>
-                      <li>Question 2</li>
-                      <li>Question 3</li>
-                      <li>Question 4</li>
-                      <li>Question 5</li>
+                     {{#each data.latestPosts}}
+                     <li> <a href="/posts/{{this._id}}#post">{{this.title}}</a> </li>
+                      {{/each}}
                     </ul>
                   </div>
               </div>

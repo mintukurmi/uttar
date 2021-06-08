@@ -84,8 +84,9 @@ router.get('/:id', auth, async (req, res) => {
         const _id = req.params.id;
         const post = await Post.findById(_id);
         const allUsers = await User.find();
+        const latestPosts = await Post.find().sort({_id: -1}).limit(5);
 
-        if(!post || !allUsers){
+        if(!post || !allUsers || !latestPosts){
             throw new Error()
         }
 
@@ -97,7 +98,7 @@ router.get('/:id', auth, async (req, res) => {
             console.log( post.views.viewers)
         }
         
-        res.render('post/post_view', { data: { post, categories, user: req.user, allUsers } })
+        res.render('post/post_view', { data: { post, categories, user: req.user, allUsers, latestPosts } })
       
     }
     catch(err) {
