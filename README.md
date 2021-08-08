@@ -1,1 +1,1 @@
-# uttar - A Q & A Portal
+# UTTAR - A Question & Answer Portal
